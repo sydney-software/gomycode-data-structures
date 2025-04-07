@@ -1,0 +1,30 @@
+function sumOfDistinctElements(set1, set2) {
+    // Combine both sets into one array
+    let combined = set1.concat(set2);
+    
+    // Create a dictionary to count occurrences
+    let elementCount = {};
+    combined.forEach(element => {
+        if (elementCount[element]) {
+            elementCount[element]++;
+        } else {
+            elementCount[element] = 1;
+        }
+    });
+    
+    // Calculate the sum of elements that appear only once
+    let distinctSum = 0;
+    for (let key in elementCount) {
+        if (elementCount[key] === 1) {
+            distinctSum += parseInt(key);
+        }
+    }
+    
+    return distinctSum;
+}
+
+// Example Usage
+let set1 = [3, 1, 7, 9];
+let set2 = [2, 4, 1, 9, 3];
+let output = sumOfDistinctElements(set1, set2);
+console.log("Output:", output); // Output: 13
